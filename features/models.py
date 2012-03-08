@@ -1,8 +1,3 @@
-import os
-os.environ["DJANGO_SETTINGS_MODULE"] = "mysite.settings"
-import sys
-sys.path.append("C:/Users/sommerc/code/python/mysite")
-
 from django.db import models
 from feature_documentation import group_doc
 
@@ -110,9 +105,7 @@ def fill_database(table_filen_name):
             print " no parameter for found", feature.prefix, feature.suffix
 
         
-if __name__ == '__main___':
-#    fill_database("C:/Users/sommerc/cellcognition/doc/feature_table.txt")
-    pass
+
             
     
     

@@ -385,8 +385,4 @@ feature_doc = {
 
     "skewness___y":
       " ",
-
-
-               
-               
-               }
+}
