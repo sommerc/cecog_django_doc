@@ -5,5 +5,4 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "cellcognition-doc.settings"
 
 from features.models import fill_database
 
-print os.getcwd()
 fill_database("feature-table.txt")

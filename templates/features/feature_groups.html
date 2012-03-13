@@ -4,7 +4,7 @@
 {% if feature_groups %}
     <ul>
     {% for group in feature_groups %}
-        <li><a href="/feature_group/{{ group.id }}/">{{ group.name }}</a></li>
+        <li><a href="/group/{{ group.id }}/">{{ group.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -25,7 +25,9 @@
 						<ul>
 						{% for feat in feature %}
 							{% ifequal feat.category.id category.id %}
-								<li><b>{{ feat }}</b></li>
+								<li><b>{{ feat }}</b>
+								<p> {{ feat.doc }}</p>
+								</li>
 							{% endifequal %}
 						{% endfor %}	
 						</ul>

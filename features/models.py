@@ -1,5 +1,5 @@
 from django.db import models
-from feature_documentation import group_doc
+from feature_documentation import group_doc, category_doc, feature_doc
 
 class FeatureGroup(models.Model):
     name = models.CharField(max_length=200)
@@ -80,11 +80,13 @@ def fill_database(table_filen_name):
         if (prefix, suffix) in [(obj.prefix, obj.suffix) for obj in Feature.objects.all()]:
             feature = Feature.objects.get(prefix=prefix, suffix=suffix)
         else:
-            feature = Feature(prefix=row['new_prefix'],
-                          suffix=row['suffix'],
+            feature = Feature(prefix=prefix,
+                          suffix=suffix,
                           category=feature_category,
+                          doc=feature_doc["___".join((prefix, suffix))],
                           )
             feature.save()
+            print feature_doc["___".join((prefix, suffix))]
         
         param_feature = ParametrizedFeature(feature=feature, old_identifier=row['identifier'])
         param_feature.save()
