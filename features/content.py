@@ -1,30 +1,39 @@
+general_doc = {
+      "Introduction": 
+        "The CellCognition object features!"
+       }
+
 group_doc = {
       "Basic shape features":
-        r"A collection to assess the objects shape. This group includes bla and blub",
+        "A collection to assess the objects shape. This group includes bla and blub",
       
       "Haralick features":
-        r"The Haralick features aim at characterizing the texture of objects by means of joint"
-        r"distribution of pixel value combinations."
-        r"In histograms, one tries to analyze the frequency of certain grey level values in an"
-        r"image. The inconvenience of this representation is that the spatial distribution of these"
-        r"values is completely lost. One method to address this inconvenience is to record combinations"
-        r"of pixel values at a certain distance. This can be done by the cooccurrence"
-        r"matrix depending on distance $d$ and angle $\Phi$, which takes as element $c^{d,\phi}_{i,j}$ "
-        r" the number of pixel pairs $x, y$ with distance $d$ at angle $\phi$, fulfilling $f(x) = i$ and $f(y) =j$ "
-        r"In order to obtain rotational invariance, the mean of the cooccurrence matrices is calculated for four "
-        r"different angles ($\phi_i = 0^0, 45^0, 90^0, 145^0$). Let $$P_{i,j}=\frac{c_{i,j}}{N}$$ be the "
-        r"cooccurrence probability for values $i$ and $j$ (for a given distance $d$ in all four angles) and let "
-        r"$\mu = \sum_j j \sum_i P(i,j)$ the mean grey level value and $\sigma^2 = \sum_j (j-\mu)^2 \sum_i P(i,j)$ "
-        r"its variance. Then, the following features can be calculated from the averaged cooccurrence matrix.<br/><br/>"   
-        r"The Haralick features have been calculated for the distances d = 1, 2, 4, 8. We have to "
-        r"note that with increasing distance, the invariance of the features is no longer guaranteed. "
-        r"For a discussion of the meaning of these features, please refer to "
-        r'<a href="#ref-held:05">[1]</a>',
+        "Brief description of Haralick features",
         
       "Basic intensity features":
-        "",
+        "asdfasdfasdf",
         
       "Convex hull features":
+        "asdfasdfasdf" ,
+        
+      "Distance map features":
+        "asdfasdfasdf",
+        
+      "Granulometry features":
+        "asdfasdfasdf",
+        
+      "Moments":
+        "",
+        
+      "Statistical geometric features":
+        "",
+      }
+
+category_doc = {
+    "circularity":
+    "",
+    
+    "convexhull":
         r"The convex hull of a set $X$ (binary image) is the smallest convex set containing $X$. Important features can "
         r"be derived from the convex hull and from the set difference $D = Conv(X) \setminus X$. "
         "\n"
@@ -38,19 +47,22 @@ group_doc = {
         r"number of possibly involved cell nuclei. The reason is that a ``bended'' row of several nuclei results on one "
         r"side in one large concavity and on the other side in several small concavities. In order to deal with this "
         r"problem, it would be good, to be able to control the degree or size of concavity we are interested in. This "
-        r"can be done by the use of granulometries." ,
-        
-      "Distance map features":
-        "",
-        
-      "Granulometry features":
+        r"can be done by the use of granulometries.",
+    
+    "distance-map-dynamics":
+    "",
+    
+    "geometry":
+    "",
+    
+    "granulometry":
         r"Granulometry allows one to study the size distribution of objects (or"
         r"structures) in an image. For this, the image is successively simplified by operators which remove all (bright "
         r"or dark) structures up to a certain size. A record is kept of how much is removed from the image with each "
         r"filtering step, leading to a distribution of measurements $m_i$, which can be seen as size dependent texture "
         r"or shape descriptors.  More mathematically speaking, each anti-extensive (extensive), increasing and "
         r"absorptive operator $\psi$ with $\psi_0 f = f$ can be used for the definition of a granulometry "
-        r"\cite{serra:83}. These properties make sure that the family of operators behaves like a set of sieves: with "
+        r"<a class='ref_link' href='#ref-serra:83'>[3]</a>. These properties make sure that the family of operators behaves like a set of sieves: with "
         r"increasing size, the sieves remove larger grains of the substance to be sieved. In practice, morphological "
         r"openings ($\gamma$: anti-extensive) and closings ($\phi$: extensive) are mostly used for this purpose. "
         r"In figure \ref{fig:granulometry}, the successive application of closings with increasing size are shown in "
@@ -77,70 +89,63 @@ group_doc = {
         r"characterize the concavities (moreprecisely than the convex hull features, see the first row of "
         r"figure\ref{fig:granulometry}), the $a^{\gamma}_i$ describe prominent spikes.These features are inherently " 
         r"invariant to rotation, translation,and, due to the division by $Vol(f)$ and $Area(f)$, to scaling.  ",
-        
-      "Moments":
+    
+    "haralick":
+        r"The Haralick features aim at characterizing the texture of objects by means of joint"
+        r"distribution of pixel value combinations."
+        r"In histograms, one tries to analyze the frequency of certain grey level values in an"
+        r"image. The inconvenience of this representation is that the spatial distribution of these"
+        r"values is completely lost. One method to address this inconvenience is to record combinations"
+        r"of pixel values at a certain distance. This can be done by the cooccurrence"
+        r"matrix depending on distance $d$ and angle $\Phi$, which takes as element $c^{d,\phi}_{i,j}$ "
+        r" the number of pixel pairs $x, y$ with distance $d$ at angle $\phi$, fulfilling $f(x) = i$ and $f(y) =j$ "
+        r"In order to obtain rotational invariance, the mean of the cooccurrence matrices is calculated for four "
+        r"different angles ($\phi_i = 0^0, 45^0, 90^0, 145^0$). Let $$P_{i,j}=\frac{c_{i,j}}{N}$$ be the "
+        r"cooccurrence probability for values $i$ and $j$ (for a given distance $d$ in all four angles) and let "
+        r"$\mu = \sum_j j \sum_i P(i,j)$ the mean grey level value and $\sigma^2 = \sum_j (j-\mu)^2 \sum_i P(i,j)$ "
+        r"its variance. Then, the following features can be calculated from the averaged cooccurrence matrix.<br/><br/>"   
+        r"The Haralick features have been calculated for the distances d = 1, 2, 4, 8. We have to "
+        r"note that with increasing distance, the invariance of the features is no longer guaranteed. "
+        r"For a discussion of the meaning of these features, please refer to "
+        r"<a class='ref_link' href='#ref-held:05'>[1]</a>",
+    
+    "haralick-normalized":
+        "same as haralick but on normalized image input",
+    
+    "intensity":
+        "",
+    
+    "intensity-normalized":
+        "same as intensity but on normalized image input",
+    
+    "moments":
         r"Moments and derived features have been initially defined to characterize distributions of values (like "
         r"histograms), but they can also be used as shape or texture descriptors. Discrete moments $m_{pq}$ are defined " 
         r" as: $$ \label{equ:moments} m_{pq} = \sum x^p y^q f(x,y)$$ with $f(x,y) \in \{0,1\}$ for shape descriptors "
         r"and $f(x,y)$ the grey level value for grey level descriptors. In pattern recognition tasks where objects are "
         r"to be characterized independently from their position and orientation, translation and rotation invariance are "
-        r"required. This can be achieved by several means. One possibility is to use moment invariants \cite{hu:62} as "
+        r"required. This can be achieved by several means. One possibility is to use moment invariants <a class ='ref_link' href='#ref-hu:62'>[6]</a> as "
         r"features, i.e. to define polynomial combinations of moments which are invariant with respect to an affine "
         r"transformation. A second possibility is to find the principal axis of the pattern and to calculate the moments "
         r"with respect to this axis and the axis perpendicular to it. This corresponds to a rotation of the object in "
         r"such a way that its principal axis coincides with the x-axis. These moments are called standard moments "
-        r"\cite{prokop:92}."
+        r"<a class ='ref_link' href='#ref-prokop:92'>[3]</a>."
         "\n"
         r"Furthermore, we can see from equation \ref{equ:moments}, that the moments can be written as $m_{pq} = " 
-        r"<x^p y^q, f(x,y)>$ with $<\cdot, \cdot>$ the scalar product. This means that $m_{pq}$ is nothing else "
+        r"\langle x^p y^q, f(x,y) \rangle$ with $\langle\cdot, \cdot\rangle$ the scalar product. This means that $m_{pq}$ is nothing else "
         r"than the projection of $f$ on the monomial $x^p y^q$. As the $x^p y^q$ are not orthogonal, the decomposition "
         r"is suboptimal in terms of redundancy. Therefore, the monomials can be replaced by orthogonal polynomials, "
-        r"like Zernike or Legendre polynomials. A comparison of the resulting methods can be found in \cite{teh:88}. "
-        r"In \cite{prokop:92}, the authors claim that standard moments give similar performance in pattern recognition "
+        r"like Zernike or Legendre polynomials. A comparison of the resulting methods can be found in <a class='ref_link' href='#ref-teh:88'>[7]</a>. "
+        r"In <a class='ref_link' href='#ref-prokop:92'>[3]</a>, the authors claim that standard moments give similar performance in pattern recognition "
         r"tasks as Zernike moments. We have not followed the approach of Zernike or Legendre moments.",
-        
-      "Statistical geometric features":
+    
+    "statistical-geometry":
         r"Statistical geometric features (or Levelset features) are shape features for different levelsets (i.e. results "
         r"of different thresholds) and, as such, texture features. For each of the following features, a distribution "
         r"of values is calculated according to the set of thresholds. For each of these distributions, the maximal "
         r"feature value, the average feature value, the sample mean and the sample standard deviation are calculated "
         r"as statistics (max_value, avg_value, sample_mean, sample_sd). Furthermore, all features are calculated on "
         r"the foreground and on the background after thresholding.",
-      }
-
-category_doc = {
-    "circularity":
-    "",
-    
-    "convexhull":
-    "",
-    
-    "distance-map-dynamics":
-    "",
-    
-    "geometry":
-    "",
-    
-    "granulometry":
-    "",
-    
-    "haralick":
-    "",
-    
-    "haralick-normalized":
-    "",
-    
-    "intensity":
-    "",
-    
-    "intensity-normalized":
-    "",
-    
-    "moments":
-    "",
-    
-    "statistical-geometry":
-    "",
     
     }
 
@@ -582,5 +587,20 @@ feature_githublink = {
 }
 
 parameter_doc = {
-    ("I", 1) : "blub",
+    "I" : "",
+    "on": "",
+    "distance": "",
+    "angular-step": "",
+    "operation": "",
+    "radius": "",
                  }
+
+reference_doc = {
+    1:'neumann:06', 
+    2:'held:05', 
+    3:'prokop:92', 
+    4:'serra:83', 
+    5:'angulo_thesis:03',
+    6:'hu:62', 
+    7:'teh:88',
+    8:'grimaud_thesis:91'}

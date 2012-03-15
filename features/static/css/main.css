@@ -65,6 +65,19 @@ border-bottom: 0;
 padding: 10px;
 }
 
+.codelinke {
+font-weight: bold;
+color: #C93;
+padding: 0px 1em;
+font-size: 0.8em;
+}
+.ref_link{
+font-weight: bold;
+color: #C93;
+padding: 0px 5px;
+font-size: 0.8em;
+}
+
 #header {
 background: url(http://cellcognition.org/header.jpg) no-repeat 0 0;
 position: relative;

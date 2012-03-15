@@ -1,9 +1,12 @@
 from django.db import models
-from feature_documentation import group_doc, \
-                                  category_doc, \
-                                  feature_doc, \
-                                  github_prefix, \
-                                  feature_githublink
+from content import group_doc, \
+                    category_doc, \
+                    feature_doc, \
+                    github_prefix, \
+                    feature_githublink, \
+                    parameter_doc, \
+                    reference_doc, \
+                    general_doc
                                   
 def get_model_fields(model):
     return map(lambda x: x.name, model._meta.fields)
@@ -91,24 +94,11 @@ def clean_databse():
                 FeatureReference]:
         [obj.delete() for obj in cls.objects.all()]
         
-    
-
 def fill_reference_table():
-    reference_dict = {
-                    1:'neumann:06', 
-                    2:'held:05', 
-                    3:'prokop:92', 
-                    4:'serra:83', 
-                    5:'angulo_thesis:03',
-                    6:'hu:62', 
-                    7:'teh:88',
-                    8:'serra:83', 
-                    9:'grimaud_thesis:91'}
-    
     from pybtex.database.input import bibtex
     parser = bibtex.Parser()
-    bib = parser.parse_file("C:/Users/sommerc/Desktop/features/text/mito.bib")
-    for label_nr, key in reference_dict.items():
+    bib = parser.parse_file("mito.bib")
+    for label_nr, key in reference_doc.items():
         ent = bib.entries[key]
         init_args = {}
         for field in get_model_fields(FeatureReference):
@@ -120,8 +110,7 @@ def fill_reference_table():
         init_args['label_nr'] = label_nr
         feat_ref = FeatureReference(**init_args)
         feat_ref.save()
-
-    
+  
 def fill_database(table_filen_name):
     import csv
     reader = csv.DictReader(open(table_filen_name,'r'), delimiter='\t')
@@ -132,11 +121,7 @@ def fill_database(table_filen_name):
         if group_name in [obj.name for obj in FeatureGroup.objects.all()]:
             feature_group = FeatureGroup.objects.get(name=group_name)
         else:
-            try:
-                doc = group_doc[group_name]
-                print doc
-            except:
-                doc =""
+            doc = group_doc[group_name]
             feature_group = FeatureGroup(name=group_name, label=group_label, doc=doc)
             feature_group.save()
         
@@ -145,7 +130,11 @@ def fill_database(table_filen_name):
         if category_name in [obj.name for obj in FeatureCategory.objects.all()]:
             feature_category = FeatureCategory.objects.get(name=category_name)
         else:
-            feature_category = FeatureCategory(name=category_name, old_name=old_category_name, doc="", group=feature_group)
+            doc = category_doc[category_name]
+            feature_category = FeatureCategory(name=category_name, 
+                                               old_name=old_category_name, 
+                                               doc=doc, 
+                                               group=feature_group)
             feature_category.save()
             
             
@@ -164,6 +153,7 @@ def fill_database(table_filen_name):
                                                                                      feature_githublink[doc_key][2])
                           )
             feature.save()
+            print "Created feature", feature
         
         param_feature = ParametrizedFeature(feature=feature, old_identifier=row['identifier'])
         param_feature.save()
@@ -175,7 +165,7 @@ def fill_database(table_filen_name):
                     param_key = Parameter.objects.get(key=key, feature=feature)
                     param_key.save()
                 else:
-                    param_key = Parameter(key=key, description="bla", feature=feature)
+                    param_key = Parameter(key=key, description=parameter_doc[key], feature=feature)
                     param_key.save()
                 
                 if (param_key, value) in [(obj.key, obj.value) for obj in ParameterSet.objects.all()]:
@@ -185,10 +175,7 @@ def fill_database(table_filen_name):
                     param.save()
             
                 param_feature.parameter.add(param)
-                print " add parameter",key,value,"to",feature.prefix,feature.suffix
                 param_feature.save()
-        else:
-            print " no parameter for found", feature.prefix, feature.suffix
             
     
 

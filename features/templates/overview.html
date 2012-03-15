@@ -16,10 +16,10 @@
 
 {% for group in feature_groups %}
 	<h1><a name="{{ group.name }}">{{ group.name }}</a></h1>
-		<p class="doc blockquote">{{group.doc|safe}}</p>
+		<p class="callout blockquote">{{group.doc}}</p>
 		{% for cat in group.featurecategory_set.all %}
 			<h2>{{ cat.name }}</h2>
-			<p>{{ cat.doc|safe }}</p>
+			<p class="doc">{{ cat.doc|safe }}</p>
 			<dl>
 			{% for fe in cat.feature_set.all %}
 				<dt>{{ fe }}</dt>
@@ -27,16 +27,15 @@
 						{% if fe.parameter_set.all %}
 							<p> Parameter:
 							{% for pa_key in fe.parameter_set.all %}
-								<br/>{{pa_key.key}} $:=\{$ 
+								<br/>{{pa_key.key}} := 
 									{% for pa_value in pa_key.parameterset_set.all %}
 										{{pa_value.value}}{% if not forloop.last %},{% endif %}
 									{% endfor %}
-									$\}$ 
 							{% endfor %}
 							</p> 
 						{% endif %}
 						<p class="portletItem"> {{ fe.doc }}</p>
-						<p><a href="{{ fe.github_link }}"> <b>Reference implementation</b></a></p>
+						<p><a class="codelink" href="{{ fe.github_link }}"> <b>code</b></a></p>
 					</dd>
 			{% endfor %}
 		{% endfor %}
