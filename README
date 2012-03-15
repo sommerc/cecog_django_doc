@@ -1,0 +1,7 @@
+Django site that contains the cell cognitions documentation
+
+includes:
+* feature documentation and nomenclature
+
+dependencies:
+* copy MathJax distro into static folder
