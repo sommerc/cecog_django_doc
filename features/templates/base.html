@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/main.css" />
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({
+		tex2jax: {
+		  inlineMath: [ ['$','$'], ["\\(","\\)"]],
+		  processEscapes: true
+		}
+	  });
+	</script>
+	<script type="text/javascript"
+	  src="/static/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+    <title>CellCogniton object features</title>
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<a id="logo" accesskey="1" href="http://cellcognition.org" target="_blank">
+			<img src="http://cellcognition.org/logo.png" alt="" title="" height="169" width="464"></a>
+		<ul id="globalnav">
+			<li><a href="http://cellcognition.org/">Home</a></li>
+			<li class=lastItem"><a href="/">Features</a></li>
+		</ul>
+		</div>
+		
+		<div id="sidebar">
+			{% block sidebar %}
+			<ul>
+				<li><a href="/">Home</a></li>
+			</ul>
+			{% endblock %}
+		</div>
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+</body>
+</html>

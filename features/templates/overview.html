@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+{% if feature_groups %}
+    <ul>
+    {% for group in feature_groups %}
+        <li><a href="#{{ group.name }}">{{ group.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No feature groups are available.</p>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% for group in feature_groups %}
+	<h1><a name="{{ group.name }}">{{ group.name }}</a></h1>
+		<p class="doc blockquote">{{group.doc|safe}}</p>
+		{% for cat in group.featurecategory_set.all %}
+			<h2>{{ cat.name }}</h2>
+			<p>{{ cat.doc|safe }}</p>
+			<dl>
+			{% for fe in cat.feature_set.all %}
+				<dt>{{ fe }}</dt>
+					<dd>
+						{% if fe.parameter_set.all %}
+							<p> Parameter:
+							{% for pa_key in fe.parameter_set.all %}
+								<br/>{{pa_key.key}} $:=\{$ 
+									{% for pa_value in pa_key.parameterset_set.all %}
+										{{pa_value.value}}{% if not forloop.last %},{% endif %}
+									{% endfor %}
+									$\}$ 
+							{% endfor %}
+							</p> 
+						{% endif %}
+						<p class="portletItem"> {{ fe.doc }}</p>
+						<p><a href="{{ fe.github_link }}"> <b>Reference implementation</b></a></p>
+					</dd>
+			{% endfor %}
+		{% endfor %}
+{% endfor %}
+
+
+<h1>References</h1>
+<ul>
+	{% for ref in feature_references %}
+		<li>
+			<p>[{{ ref.label_nr }}]<a name="ref-{{ ref.key }}"> <b>{{ ref.author}}</b>, <i>{{ ref.title}} </i> {{ref.journal}} <b>({{ref.year}})</b></a></p>
+		</li>
+	{% endfor %}
+</ul>
+
+{% endblock %}

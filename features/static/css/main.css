@@ -1,0 +1,132 @@
+h1 {
+background-color: #F1F1F1;
+border-bottom: 0;
+color: #2EA400;
+font-size: 1.50em;
+padding: 3px 8px;
+font-weight: bold;
+}
+
+h2 {
+border-top: 2px solid #F1F1F1;
+border-bottom: 0;
+color: #26700B;
+font-size: 1.17em;
+font-weight: 600;
+margin-top: 1.25em;
+padding: 3px 8px;
+}
+
+p {
+margin: 0 0 0.75em 0;
+line-height: 1.5em;
+}
+
+.blockquote {
+padding-left: 0.5em;
+margin-left: 4px;
+border-left: 4px solid #BCBCBC;
+color: #76797C;
+}
+
+dt {
+margin: 0.5em 0 0.75em 12px;
+font-weight: bolder;
+}
+
+li {
+margin-bottom: 0;
+}
+
+.callout {
+font-weight: bold;
+color: #C93;
+padding: 0px 1em;
+}
+
+.doc {
+font-weight: bold;
+padding: 0px 1em;
+}
+
+
+p a:visited, li a:visited, dd a:visited {
+border-color: #85ADDE;
+}
+
+strong, b {
+font-weight: bolder;
+}
+
+.portletItem {
+background-color: #F1F1F1;
+border: 1px solid #BCBCBC;
+border-bottom: 0;
+padding: 10px;
+}
+
+#header {
+background: url(http://cellcognition.org/header.jpg) no-repeat 0 0;
+position: relative;
+//height:200px;
+z-index: 3;
+}
+
+#logo {
+display: block;
+overflow: hidden;
+}
+
+#wrapper {
+background-color: white;
+margin: 0px auto;
+width: 1000px;
+}
+
+#globalnav {
+background-color: #6791C9;
+border-top: 1px solid white;
+line-height: 2.7em;
+list-style-image: none;
+list-style-type: none;
+overflow: hidden;
+padding: 0 0 0 1.25em;
+}
+
+#globalnav li {
+border-right: 1px solid #8BAFDF;
+float: left;
+margin: 0 -1px 0 0;
+}
+body {
+background-color: black;
+margin: 0;
+padding: 0;
+background: #333;
+background: -moz-linear-gradient(left, #444, #222);
+background: -webkit-gradient(linear, left, left bottom, from(#222), to(#444));
+color: #666;
+font: 100% Verdana, Geneva, sans-serif
+}
+
+#globalnav li.lastItem {
+border-right: 0;
+}
+
+#globalnav li a {
+border:0;
+color:#fff;
+display:block;
+font-weight:bold;
+margin:0;
+padding:0 1.5em;
+text-decoration:none;
+text-transform:none;
+}
+
+#logo img {
+border: 0;
+padding: 0;
+margin: 0.5em 0em 0em 2em;
+}
+

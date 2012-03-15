@@ -1,5 +1,12 @@
 from django.db import models
-from feature_documentation import group_doc, category_doc, feature_doc
+from feature_documentation import group_doc, \
+                                  category_doc, \
+                                  feature_doc, \
+                                  github_prefix, \
+                                  feature_githublink
+                                  
+def get_model_fields(model):
+    return map(lambda x: x.name, model._meta.fields)
 
 class FeatureGroup(models.Model):
     name = models.CharField(max_length=200)
@@ -23,6 +30,7 @@ class Feature(models.Model):
     suffix = models.CharField(max_length=200)
     category = models.ForeignKey(FeatureCategory)
     doc = models.TextField()
+    github_link = models.CharField(max_length=300)
     
     @property
     def identifier(self):
@@ -33,19 +41,85 @@ class Feature(models.Model):
     
 class Parameter(models.Model):
     key = models.CharField(max_length=200, default="")
-    value = models.CharField(max_length=200, default="")
+    description = models.TextField()  
+    feature = models.ForeignKey(Feature)  
     
     def __unicode__(self):
-        return " : ".join((self.key, self.value))
+        return self.key 
+
+class ParameterSet(models.Model):
+    key = models.ForeignKey(Parameter)
+    value = models.CharField(max_length=200, default="")
+
+    def __unicode__(self):
+        return " : ".join((str(self.key), self.value))
     
 class ParametrizedFeature(models.Model):
     feature = models.ForeignKey(Feature)
-    parameter = models.ManyToManyField(Parameter)
+    parameter = models.ManyToManyField(ParameterSet)
     old_identifier = models.CharField(max_length=200)
     
     def __unicode__(self):
-        return "_".join([self.feature.prefix,] + [obj.key +"_"+ obj.value for obj in self.parameter.all()] + [self.feature.suffix,]) 
+        return "_".join([self.feature.prefix,] + [obj.key.key +"_"+ obj.value for obj in self.parameter.all()] + [self.feature.suffix,]) 
     
+class FeatureReference(models.Model):
+    key = models.CharField(max_length=42)
+    author = models.CharField(max_length=300)
+    title = models.CharField(max_length=300)
+    journal = models.CharField(max_length=300)
+    month = models.CharField(max_length=12)
+    number = models.CharField(max_length=10)
+    year = models.CharField(max_length=10)
+    volume = models.CharField(max_length=10)
+    pages = models.CharField(max_length=10)
+    publisher = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    type = models.CharField(max_length=42, default='article')
+    label_nr = models.IntegerField()
+    
+    def __unicode__(self):
+        return self.key
+    
+    
+def clean_databse():
+    for cls in [ParametrizedFeature, 
+                ParameterSet, 
+                Parameter, 
+                Feature, 
+                FeatureCategory, 
+                FeatureGroup, 
+                FeatureReference]:
+        [obj.delete() for obj in cls.objects.all()]
+        
+    
+
+def fill_reference_table():
+    reference_dict = {
+                    1:'neumann:06', 
+                    2:'held:05', 
+                    3:'prokop:92', 
+                    4:'serra:83', 
+                    5:'angulo_thesis:03',
+                    6:'hu:62', 
+                    7:'teh:88',
+                    8:'serra:83', 
+                    9:'grimaud_thesis:91'}
+    
+    from pybtex.database.input import bibtex
+    parser = bibtex.Parser()
+    bib = parser.parse_file("C:/Users/sommerc/Desktop/features/text/mito.bib")
+    for label_nr, key in reference_dict.items():
+        ent = bib.entries[key]
+        init_args = {}
+        for field in get_model_fields(FeatureReference):
+            if field in ent.fields.keys():
+                init_args[field] = ent.fields[field]
+                
+        init_args['author'] = ", ".join([" ".join((obj.first()[0], obj.last()[0])) for obj in ent.persons['author']])
+        init_args['key'] = key
+        init_args['label_nr'] = label_nr
+        feat_ref = FeatureReference(**init_args)
+        feat_ref.save()
 
     
 def fill_database(table_filen_name):
@@ -80,13 +154,16 @@ def fill_database(table_filen_name):
         if (prefix, suffix) in [(obj.prefix, obj.suffix) for obj in Feature.objects.all()]:
             feature = Feature.objects.get(prefix=prefix, suffix=suffix)
         else:
+            doc_key = "___".join((prefix, suffix))
             feature = Feature(prefix=prefix,
                           suffix=suffix,
                           category=feature_category,
-                          doc=feature_doc["___".join((prefix, suffix))],
+                          doc=feature_doc[doc_key],
+                          github_link = github_prefix + feature_githublink[doc_key][0] + "#L%d-%d" % \
+                                                                                    (feature_githublink[doc_key][1],
+                                                                                     feature_githublink[doc_key][2])
                           )
             feature.save()
-            print feature_doc["___".join((prefix, suffix))]
         
         param_feature = ParametrizedFeature(feature=feature, old_identifier=row['identifier'])
         param_feature.save()
@@ -94,10 +171,17 @@ def fill_database(table_filen_name):
         parameter_str = row['parameter']
         if parameter_str:
             for key, value in zip(parameter_str.split("_")[::2], parameter_str.split("_")[1::2]):
-                if (key, value) in [(obj.key, obj.value) for obj in Parameter.objects.all()]:
-                    param = Parameter.objects.get(key=key, value=value)
+                if (key, feature) in [(obj.key, obj.feature) for obj in Parameter.objects.all()]:
+                    param_key = Parameter.objects.get(key=key, feature=feature)
+                    param_key.save()
                 else:
-                    param = Parameter(key=key, value=value)
+                    param_key = Parameter(key=key, description="bla", feature=feature)
+                    param_key.save()
+                
+                if (param_key, value) in [(obj.key, obj.value) for obj in ParameterSet.objects.all()]:
+                    param = ParameterSet.objects.get(key=param_key, value=value)
+                else:
+                    param = ParameterSet(key=param_key, value=value)
                     param.save()
             
                 param_feature.parameter.add(param)
@@ -105,6 +189,8 @@ def fill_database(table_filen_name):
                 param_feature.save()
         else:
             print " no parameter for found", feature.prefix, feature.suffix
+            
+    
 
         
 
