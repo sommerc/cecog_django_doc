@@ -76,57 +76,72 @@ category_doc = {
         r"structures) in an image. For this, the image is successively simplified by operators which remove all (bright "
         r"or dark) structures up to a certain size. A record is kept of how much is removed from the image with each "
         r"filtering step, leading to a distribution of measurements $m_i$, which can be seen as size dependent texture "
-        r"or shape descriptors.  More mathematically speaking, each anti-extensive (extensive), increasing and "
+        r"or shape descriptors. Each anti-extensive (extensive), increasing and "
         r"absorptive operator $\psi$ with $\psi_0 f = f$ can be used for the definition of a granulometry "
-        r"<a class='ref_link' href='#ref-serra:83'>[3]</a>. These properties make sure that the family of operators behaves like a set of sieves: with "
-        r"increasing size, the sieves remove larger grains of the substance to be sieved. In practice, morphological "
+        r"<a class='ref_link' href='#ref-serra:83'>[3]</a>. These properties make sure that the family of operators behaves like a set of sieves with "
+        r"increasing size. The sieves remove larger grains of the substance to be sieved. In practice, morphological "
         r"openings ($\gamma$: anti-extensive) and closings ($\phi$: extensive) are mostly used for this purpose. "
-        r"In figure \ref{fig:granulometry}, the successive application of closings with increasing size are shown in "
-        r"the first row: the concavities are successively filled. In the second row, the successive application of "
-        r"openings with increasing size is shown: small details are successively removed."
-        "\n"
-        r"Let $\gamma_{sB}$ be a morphological opening with the structuringelement $B$ of size $s$. Then the family " 
-        r"$\Gamma = \{ \gamma_{sB}\}$defines a series of operators which can be successively applied to theimage $f$. " 
-        r"For each step, we record a measure (e.g. the sum of greylevel values) of what has been removed from the image. " 
-        r"Hence, weobtain a list of measures $m_i = m(s_i)$ with $s_i \in \{s_1, s_2, s_3\ldots \}$. We have used the "
-        r"volume and the area, where the imagevolume $Vol(\cdot)$ means the sum of gray levels and the area$Area(\cdot)$" 
-        r"means the number of non zero pixels. "
+#        r"In figure \ref{fig:granulometry}, the successive application of closings with increasing size are shown in "
+#        r"the first row: the concavities are successively filled. In the second row, the successive application of "
+#        r"openings with increasing size is shown: small details are successively removed."
+        "\n" 
+        r"Let $\gamma_{sB}$ be a morphological opening with the structuring element $B$ of size $s$. Then the family " 
+        r"$\Gamma = \{ \gamma_{sB}\}$ defines a series of operators which can be successively applied to the image $f$. " 
+        r"For each step, we record a measure (e.g. the sum of gray level values) of what has been removed from the image. " 
+        r"Hence, we obtain a list of measures $m_i = m(s_i)$ with $s_i \in \{s_1, s_2, s_3, \ldots \}$. We have used the "
+        r"volume and the area, where the image volume $\mathrm{Vol}(\cdot)$ means the sum of gray levels and the area $\mathrm{Area}(\cdot)$" 
+        r"means the number of non zero pixels."
         r"$$\begin{eqnarray} v^{\phi}_i &=& \frac{Vol(\phi_{s_{i+1}} f - \phi_{s_i} f)}{Vol(f)} \nonumber \\ "
         r"a^{\phi}_i &=& \frac{Area(\phi_{s_{i+1}} f - \phi_{s_i} f)}{Area(f)} \nonumber \\ "
         r"v^{\gamma}_i &=& \frac{Vol(\gamma_{s_i} f - \gamma_{s_{i+1}} f)}{Vol(f)} \nonumber \\ "
         r"a^{\gamma}_i &=& \frac{Area(\gamma_{s_i} f - \gamma_{s_{i+1}} f)}{Area(f)} \end{eqnarray}$$ "
         r"The features $v^{\phi}_i$ and $v^{\gamma}_i$ describe the texture in terms of size of dark and bright "
-        r"substructures. If one of these valuesis particularly high, there were many substructures of this size inthe "
-        r"object. We not that the last image in the second row of figure\ref{fig:granulometry} looks like an interphase. " 
-        r"We can state, thatthe operators have removed and recorded the difference betweenprometaphase and interphase. " 
-        r"However, there may be a problem with thelast structuring element: if the cell is too small, the last "
-        r"openingwill eventually remove the whole cell. In this case, we would recordan abnormally high value. The " 
-        r"features $a^{\gamma}_i$ and $a^{\phi}_i$ describe the irregularityof the shape. Whereas $a^{\phi}_i$ " 
-        r"characterize the concavities (moreprecisely than the convex hull features, see the first row of "
-        r"figure\ref{fig:granulometry}), the $a^{\gamma}_i$ describe prominent spikes.These features are inherently " 
-        r"invariant to rotation, translation,and, due to the division by $Vol(f)$ and $Area(f)$, to scaling.  ",
+        r"substructures. If one of these values is particularly high, there were many substructures of this size in the object."
+#        r" Note that the last image in the second row of figure\ref{fig:granulometry} looks like an interphase. " 
+#        r"We can state, thatthe operators have removed and recorded the difference betweenprometaphase and interphase. " 
+        r"There may be a problem with the last structuring element: if the object is too small, the last "
+        r"opening will eventually remove the whole object. In this case, we would record an abnormally high value. The " 
+        r"features $a^{\gamma}_i$ and $a^{\phi}_i$ describe the irregularity of the shape. Whereas $a^{\phi}_i$ " 
+        r"characterize the concavities, $a^{\gamma}_i$ describes prominent spikes. These features are inherently " 
+        r"invariant to rotation, translation, and, due to the division by $\mathrm{Vol}(f)$ and $\mathrm{Area}(f)$, to scaling.",
     
     "haralick":
-        r"The Haralick features aim at characterizing the texture of objects by means of joint"
+        r"The Haralick features computed on the original gray values. "
+        r"Haralick fetaures characterize the texture of objects by means of joint"
         r"distribution of pixel value combinations."
         r"In histograms, one tries to analyze the frequency of certain gray level values in an"
         r"image. The inconvenience of this representation is that the spatial distribution of these"
-        r"values is completely lost. One method to address this inconvenience is to record combinations"
-        r"of pixel values at a certain distance. This can be done by the cooccurrence"
+        r"values is completely lost. One method to address this is to record combinations"
+        r"of pixel values at a certain distance. This can be done by the co-occurrence"
         r"matrix depending on distance $d$ and angle $\Phi$, which takes as element $c^{d,\phi}_{i,j}$ "
         r" the number of pixel pairs $x, y$ with distance $d$ at angle $\phi$, fulfilling $f(x) = i$ and $f(y) =j$ "
-        r"In order to obtain rotational invariance, the mean of the cooccurrence matrices is calculated for four "
-        r"different angles ($\phi_i = 0^0, 45^0, 90^0, 145^0$). Let $$P_{i,j}=\frac{c_{i,j}}{N}$$ be the "
-        r"cooccurrence probability for values $i$ and $j$ (for a given distance $d$ in all four angles) and let "
+        r"In order to obtain rotational invariance, the mean of the co-occurrence matrices is calculated for four "
+        r"different angles $\phi_i = 0^0, 45^0, 90^0, 145^0$ and for different distances $d =1, 2, 4, 8$. "
+        r"Let $$P_{i,j}=\frac{c_{i,j}}{N}$$ be the "
+        r"co-occurrence probability for values $i$ and $j$ (for a given distance $d$ in all four angles) and let "
         r"$\mu = \sum_j j \sum_i P(i,j)$ the mean gray level value and $\sigma^2 = \sum_j (j-\mu)^2 \sum_i P(i,j)$ "
-        r"its variance. Then, the following features can be calculated from the averaged cooccurrence matrix.<br/><br/>"   
-        r"The Haralick features have been calculated for the distances d = 1, 2, 4, 8. We have to "
-        r"note that with increasing distance, the invariance of the features is no longer guaranteed. "
-        r"For a discussion of the meaning of these features, please refer to "
+        r"its variance. Then, the following features can be calculated from the averaged co-occurrence matrix.<br/><br/>"   
+        r"For a detailed discussion on Haralick features, see "
         r"<a class='ref_link' href='#ref-held:05'>[1]</a>",
     
     "haralick-normalized":
-        "same as haralick but on normalized image input",
+        r"The Haralick features computed on the normalized gray values. "
+        r"Haralick fetaures characterize the texture of objects by means of joint"
+        r"distribution of pixel value combinations."
+        r"In histograms, one tries to analyze the frequency of certain gray level values in an"
+        r"image. The inconvenience of this representation is that the spatial distribution of these"
+        r"values is completely lost. One method to address this is to record combinations"
+        r"of pixel values at a certain distance. This can be done by the co-occurrence"
+        r"matrix depending on distance $d$ and angle $\Phi$, which takes as element $c^{d,\phi}_{i,j}$ "
+        r" the number of pixel pairs $x, y$ with distance $d$ at angle $\phi$, fulfilling $f(x) = i$ and $f(y) =j$ "
+        r"In order to obtain rotational invariance, the mean of the co-occurrence matrices is calculated for four "
+        r"different angles $\phi_i = 0^0, 45^0, 90^0, 145^0$ and for different distances $d =1, 2, 4, 8$. "
+        r"Let $$P_{i,j}=\frac{c_{i,j}}{N}$$ be the "
+        r"co-occurrence probability for values $i$ and $j$ (for a given distance $d$ in all four angles) and let "
+        r"$\mu = \sum_j j \sum_i P(i,j)$ the mean gray level value and $\sigma^2 = \sum_j (j-\mu)^2 \sum_i P(i,j)$ "
+        r"its variance. Then, the following features can be calculated from the averaged co-occurrence matrix.<br/><br/>"   
+        r"For a detailed discussion on Haralick features, see "
+        r"<a class='ref_link' href='#ref-held:05'>[1]</a>",
     
     "intensity":
         "Basic intensity features are simple statistics on the original gray value distribution of an object. "
@@ -241,34 +256,44 @@ feature_doc = {
       " ",
 
     "granulometry___area-1":
-      " ",
+      r"Normalized change of area after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 1$: "
+      r"$$\frac{\mathrm{Area}(\Omega_1 f - \Omega_0 f)}{\mathrm{Area}(f)}$$",
 
     "granulometry___area-2":
-      " ",
+     r"Normalized change of area after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 2$: "
+      r"$$\frac{\mathrm{Area}(\Omega_2 f - \Omega_1 f)}{\mathrm{Area}(f)}$$",
 
     "granulometry___area-3":
-      " ",
+      r"Normalized change of area after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 3$: "
+      r"$$\frac{\mathrm{Area}(\Omega_3 f - \Omega_2 f)}{\mathrm{Area}(f)}$$",
 
     "granulometry___area-5":
-      " ",
+      r"Normalized change of area after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 5$: "
+      r"$$\frac{\mathrm{Area}(\Omega_5 f - \Omega_3 f)}{\mathrm{Area}(f)}$$",
 
     "granulometry___area-7":
-      " ",
+      r"Normalized change of area after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 7$: "
+      r"$$\frac{\mathrm{Area}(\Omega_7 f - \Omega_5 f)}{\mathrm{Area}(f)}$$",
 
     "granulometry___volume-1":
-      " ",
+      r"Normalized change of volume after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 1$: "
+      r"$$\frac{\mathrm{Vol}(\Omega_1 f - \Omega_0 f)}{\mathrm{Vol}(f)}$$",
 
     "granulometry___volume-2":
-      " ",
+      r"Normalized change of volume after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 2$: "
+      r"$$\frac{\mathrm{Vol}(\Omega_2 f - \Omega_1 f)}{\mathrm{Vol}(f)}$$",
 
     "granulometry___volume-3":
-      " ",
+      r"Normalized change of volume after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 3$: "
+      r"$$\frac{\mathrm{Vol}(\Omega_3 f - \Omega_2 f)}{\mathrm{Vol}(f)}$$",
 
     "granulometry___volume-5":
-      " ",
+      r"Normalized change of volume after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 5$: "
+      r"$$\frac{\mathrm{Vol}(\Omega_5 f - \Omega_3 f)}{\mathrm{Vol}(f)}$$",
 
     "granulometry___volume-7":
-      " ",
+      r"Normalized change of volume after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 7$: "
+      r"$$\frac{\mathrm{Vol}(\Omega_7 f - \Omega_5 f)}{\mathrm{Vol}(f)}$$",
 
     "gyration___radius":
       " ",
