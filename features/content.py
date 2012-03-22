@@ -14,7 +14,9 @@ group_doc = {
         "asdfasdfasdf",
         
       "Convex hull features":
-        "asdfasdfasdf" ,
+        r"The convex hull of a binary image $X$ is the smallest convex set "
+        r"containing $X$. Important features can be derived from the convex hull "
+        r"and from the set difference." ,
         
       "Distance map features":
         "asdfasdfasdf",
