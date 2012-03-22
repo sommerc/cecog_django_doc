@@ -16,8 +16,13 @@ class FeatureGroup(models.Model):
     label = models.CharField(max_length=200) 
     doc = models.TextField()
     
+    
+    
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['name']
 
 class FeatureCategory(models.Model):
     name = models.CharField(max_length=200)
@@ -27,6 +32,9 @@ class FeatureCategory(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['name']
     
 class Feature(models.Model):
     prefix = models.CharField(max_length=200)
@@ -39,6 +47,9 @@ class Feature(models.Model):
     def identifier(self):
         return "_".join((self.prefix, self.suffix))
     
+    class Meta:
+        ordering = ['prefix']
+    
     def __unicode__(self):
         return self.identifier
     
@@ -49,6 +60,9 @@ class Parameter(models.Model):
     
     def __unicode__(self):
         return self.key 
+    
+    class Meta:
+        ordering = ['key']
 
 class ParameterSet(models.Model):
     key = models.ForeignKey(Parameter)
@@ -57,6 +71,9 @@ class ParameterSet(models.Model):
     def __unicode__(self):
         return " : ".join((str(self.key), self.value))
     
+    class Meta:
+        ordering = ['key']
+    
 class ParametrizedFeature(models.Model):
     feature = models.ForeignKey(Feature)
     parameter = models.ManyToManyField(ParameterSet)
@@ -64,6 +81,9 @@ class ParametrizedFeature(models.Model):
     
     def __unicode__(self):
         return "_".join([self.feature.prefix,] + [obj.key.key +"_"+ obj.value for obj in self.parameter.all()] + [self.feature.suffix,]) 
+    
+    class Meta:
+        ordering = ['old_identifier']
     
 class FeatureReference(models.Model):
     key = models.CharField(max_length=42)
@@ -82,6 +102,9 @@ class FeatureReference(models.Model):
     
     def __unicode__(self):
         return self.key
+    
+    class Meta:
+        ordering = ['label_nr']
     
     
 def clean_databse():

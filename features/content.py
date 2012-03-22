@@ -5,30 +5,36 @@ general_doc = {
 
 group_doc = {
       "Basic shape features":
-        "A collection to assess the objects shape. This group includes bla and blub",
+        r"Basic features are characterizing the shape of an object.",
       
       "Haralick features":
-        "Brief description of Haralick features",
+        r"The Haralick features that aim at characterizing the texture of objects by "
+        r"means of joint distribution of pixel value combinations.",
         
       "Basic intensity features":
-        "asdfasdfasdf",
+        r"Basic features characerize the intensity and its variation of an object.",
         
       "Convex hull features":
-        r"The convex hull of a binary image $X$ is the smallest convex set "
-        r"containing $X$. Important features can be derived from the convex hull "
+        r"The convex hull of a binary image is the smallest convex set "
+        r"containing the image. Several object features can be derived from the convex hull "
         r"and from the set difference." ,
         
       "Distance map features":
-        "asdfasdfasdf",
+        r"Distance map features are object features derived from the eucliedian distance transform (distance map)"
+        r"of the image",
         
       "Granulometry features":
-        "asdfasdfasdf",
+        r"Granulomety features characterize the size distribution of objects (or "
+        r"structures) in an image. For this, the image is successively "
+        r"simplified by morphological operators.",
         
       "Moments":
-        "",
+        r"Moments and derived features have been are defined to "
+        r"characterize distributions of pixel values (like histograms).",
         
       "Statistical geometric features":
-        "",
+        r"Statistical geometric features collect statistics of shape and texture measurements "
+        r"applied to the binarized image at several thresholds levels",
       }
 
 category_doc = {
@@ -52,7 +58,15 @@ category_doc = {
         r"can be done by the use of granulometries.",
     
     "distance-map-dynamics":
-    "",
+    r"The idea is the following: let $D_X$ be the "
+    r"distance map of set $X$ (binary image), i.e. $D_X(x)$ is the distance "
+    r"of pixel $x \in X$ to the nearest pixel $y \notin X$. If the object "
+    r"corresponds to an ellipse for instance, we can expect one prominent " 
+    r"maximum in the distance function. If it could be decomposed into two "
+    r"overlapping ellipses, where each of these ellipses are well "
+    r"recognizable, on would expect two prominent maxima. Actually, if the "
+    r"basic shapes are sufficiently prominent, the number of prominent "
+    r"maxima should be the same as the number of the basic shapes.",
     
     "geometry":
     "",
