@@ -144,14 +144,14 @@ category_doc = {
         r"<a class='ref_link' href='#ref-held:05'>[1]</a>",
     
     "intensity":
-        "Basic intensity features are simple statistics on the original gray value distribution of an object. "
-        "In contrast to texture features basic intensity features cannot describe substructures "
-        "and repeated subpatterns of the object.",
+        r"Basic intensity features are simple statistics on the original gray value distribution of an object. "
+        r"In contrast to texture features basic intensity features cannot describe substructures "
+        r"and repeated subpatterns of the object.",
     
     "intensity-normalized":
-        "Basic intensity-normalized features are simple statistics on the <i>normalized</i> gray value distribution of an object. "
-        "In contrast to texture features basic intensity features cannot describe substructures "
-        "and repeated subpatterns of the object.",
+        r"Basic intensity-normalized features are simple statistics on the <i>normalized</i> gray value distribution of an object. "
+        r"In contrast to texture features basic intensity features cannot describe substructures "
+        r"and repeated subpatterns of the object.",
     
     "moments":
         r"Moments and derived features have been initially defined to characterize distributions of values (like "
@@ -244,16 +244,16 @@ feature_doc = {
       r"radius of the first four highest dynamics of the distance map",
 
     "eccentricity___":
-      " ",
+      "like circularity, but under the hypothesis of an ellipse",
 
     "ellipse___ratio-axis":
-      " ",
+      r"ratio of minor axis to major axis",
 
     "ellipse___major-axis":
-      " ",
+      r"length of major axis of the ellipse having the same second order moments as the object",
 
     "ellipse___minor-axis":
-      " ",
+      r"length of minor axis of the ellipse having the same second order moments as the object",
 
     "granulometry___area-1":
       r"Normalized change of area after applying subsequent moprhological operations $\Omega_{s_i}$ with $s_i = 1$: "
@@ -296,50 +296,50 @@ feature_doc = {
       r"$$\frac{\mathrm{Vol}(\Omega_7 f - \Omega_5 f)}{\mathrm{Vol}(f)}$$",
 
     "gyration___radius":
-      " ",
+      r"radius of a circle centered in the origin with the same second order moments as the object",
 
     "gyration___ratio":
-      " ",
+      r"ratio of the gyration radius to the maximal distance $\Delta_{max}$",
 
     "haralick___ASM":
-      r"Angular Second Moment (Energy), i.e. $\sum P_{i,j}^2$",
+      r"Angular Second Moment (Energy) $$\sum P_{i,j}^2$$",
 
     "haralick___CON":
-      r"Contrast (Inertia), i.e. $\sum P_{i,j}(i-j)^2$",
+      r"Contrast (Inertia) $$\sum P_{i,j}(i-j)^2$$",
 
     "haralick___COR":
-      r"Correlation, i.e. $- \sum \frac{(i-\mu)(j-\mu)}{\sigma^2} P(i,j)$",
+      r"Correlation $$- \sum \frac{(i-\mu)(j-\mu)}{\sigma^2} P(i,j)$$",
 
     "haralick___COV":
-      r"Coefficient of variation, i.e. $\frac{\sigma^2}{\mu}$",
+      r"Coefficient of variation $$\frac{\sigma^2}{\mu}$$",
 
     "haralick___DAV":
-      r"Difference average, i.e. $\sum_k k \sum_{|i-j|=k} P(i,j)$ ",
+      r"Difference average $$\sum_k k \sum_{|i-j|=k} P(i,j)$$",
 
     "haralick___ENT":
-      r"Entropy, i.e. $- \sum P_{i,j} \log{P_{i,j}}$",
+      r"Entropy $$- \sum P_{i,j} \log{P_{i,j}}$$",
 
     "haralick___IDM":
-      r"Inverse Difference Moment (Homogeneity), i.e. $\sum \frac{P_{i,j}}{1 + (i-j)^2}$",
+      r"Inverse Difference Moment (Homogeneity) $$\sum \frac{P_{i,j}}{1 + (i-j)^2}$$",
 
     "haralick___PRO":
-      r"Prominence, i.e. $\sum (i+j-2\mu)^4 P(i,j)$",
+      r"Prominence $$\sum (i+j-2\mu)^4 P(i,j)$$",
 
     "haralick___SAV":
-      r"Sum average, i.e. the average of partial sums, subject to the condition $|i+j| = k$: $\sum_k k "
-      r"\sum_{|i+j|=k} P(i,j)$",
+      r"Sum average: the average of partial sums, subject to the condition $|i+j| = k$: "
+      r"$$\sum_k k \sum_{|i+j|=k} P(i,j)$$",
 
     "haralick___SET":
-      r"Sum entropy, i.e. $\sum_k \sum_{|i-j|=k} P(i,j) \log{\sum_{|i-j|=k} P(i,j)}$",
+      r"Sum entropy $$\sum_k \sum_{|i-j|=k} P(i,j) \log{\sum_{|i-j|=k} P(i,j)}$$",
 
     "haralick___SHA":
-      r"Shade, i.e. $\sum (i+j-2\mu)^3 P(i,j)$",
+      r"Shade $$\sum (i+j-2\mu)^3 P(i,j)$$",
 
     "haralick___SVA":
-      r"Sum variance, i.e. $\sum_k (k - SAV)^2 \sum_{|i-j|=k} P(i,j)$",
+      r"Sum variance $$\sum_k (k - SAV)^2 \sum_{|i-j|=k} P(i,j)$$",
 
     "haralick___VAR":
-      r"Variance, i.e. $\sum (i-\mu)^2 P(i,j)$",
+      r"Variance $$\sum (i-\mu)^2 P(i,j)$$",
 
     "haralick___average":
       r"Average $\mu$",
@@ -348,49 +348,50 @@ feature_doc = {
       r"Variance $\sigma^2$",
 
     "haralick-normalized___ASM":
-      " ",
+      r"Angular Second Moment (Energy) $$\sum P_{i,j}^2$$",
 
     "haralick-normalized___CON":
-      " ",
+      r"Contrast (Inertia) $$\sum P_{i,j}(i-j)^2$$",
 
     "haralick-normalized___COR":
-      " ",
+      r"Correlation $$- \sum \frac{(i-\mu)(j-\mu)}{\sigma^2} P(i,j)$$",
 
     "haralick-normalized___COV":
-      " ",
+      r"Coefficient of variation $$\frac{\sigma^2}{\mu}$$",
 
     "haralick-normalized___DAV":
-      " ",
+      r"Difference average $$\sum_k k \sum_{|i-j|=k} P(i,j)$$",
 
     "haralick-normalized___ENT":
-      " ",
+      r"Entropy $$- \sum P_{i,j} \log{P_{i,j}}$$",
 
     "haralick-normalized___IDM":
-      " ",
+      r"Inverse Difference Moment (Homogeneity) $$\sum \frac{P_{i,j}}{1 + (i-j)^2}$$",
 
     "haralick-normalized___PRO":
-      " ",
+      r"Prominence $$\sum (i+j-2\mu)^4 P(i,j)$$",
 
     "haralick-normalized___SAV":
-      " ",
+      r"Sum average: the average of partial sums, subject to the condition $|i+j| = k$: "
+      r"$$\sum_k k \sum_{|i+j|=k} P(i,j)$$",
 
     "haralick-normalized___SET":
-      " ",
+      r"Sum entropy $$\sum_k \sum_{|i-j|=k} P(i,j) \log{\sum_{|i-j|=k} P(i,j)}$$",
 
     "haralick-normalized___SHA":
-      " ",
+      r"Shade $$\sum (i+j-2\mu)^3 P(i,j)$$",
 
     "haralick-normalized___SVA":
-      " ",
+      r"Sum variance $$\sum_k (k - SAV)^2 \sum_{|i-j|=k} P(i,j)$$",
 
     "haralick-normalized___VAR":
-      " ",
+      r"Variance $$\sum (i-\mu)^2 P(i,j)$$",
 
     "haralick-normalized___average":
-      " ",
+      r"Average $\mu$",
 
     "haralick-normalized___variance ":
-      " ",
+      r"Variance $\sigma^2$",
 
     "circularity___robust-avg":
       r"robust way of calculating circularity, as it does not rely on the perimeter, but on the maximal "
@@ -405,82 +406,106 @@ feature_doc = {
       r"The measure tends towards 0 for a perfect circle",
 
     "statistical-geometry___CAREA_avgerage":
-      " ",
+      r"Average average-clump-area (average area of the connected components)",
 
     "statistical-geometry___CAREA_max":
-      " ",
+      r"Maximal average-clump-area (average area of the connected components)",
 
     "statistical-geometry___CAREA_sample_average":
-      " ",
+      r"Sample average average-clump-area (average area of the connected components)",
 
     "statistical-geometry___CAREA_sample_standard-deviation":
-      " ",
+      r"Sample standard deviation of average-clump-area (average area of the connected components)",
 
     "statistical-geometry___DISP_avgerage":
-      " ",
+      r"Average average-clump-displacement "
+      r"(estimation of the average distance between center of gravity of the "
+      r"connected component and the center of gravity of the object)",
 
     "statistical-geometry___DISP_max":
-      " ",
+      r"Maximal average-clump-displacement "
+      r"(estimation of the average distance between center of gravity of the "
+      r"connected component and the center of gravity of the object)",
 
     "statistical-geometry___DISP_sample_average":
-      " ",
+      r"Sample average average-clump-displacement "
+      r"(estimation of the average distance between center of gravity of the "
+      r"connected component and the center of gravity of the object)",
 
     "statistical-geometry___DISP_sample_standard-deviation":
-      " ",
+      r"Sample standard deviation of average-clump-displacement "
+      r"(estimation of the average distance between center of gravity of the "
+      r"connected component and the center of gravity of the object)",
 
     "statistical-geometry___INTERIA_avgerage":
-      " ",
+      r"Average average-clump-interia (like "
+      r"average clump displacement, but weighted by the area of each "
+      r"connected component)",
 
     "statistical-geometry___INTERIA_max":
-      " ",
+      r"Maximal average-clump-interia (like "
+      r"average clump displacement, but weighted by the area of each "
+      r"connected component)",
 
     "statistical-geometry___INTERIA_sample_average":
-      " ",
+      r"Sample average average-clump-interia (like "
+      r"average clump displacement, but weighted by the area of each "
+      r"connected component)",
 
     "statistical-geometry___INTERIA_sample_standard-deviation":
-      " ",
+      r"Sample standard deviation average-clump-interia (like "
+      r"average clump displacement, but weighted by the area of each "
+      r"connected component)",
 
     "statistical-geometry___IRGL_avgerage":
-      " ",
+      r"Average irregularity",
 
     "statistical-geometry___IRGL_max":
-      " ",
+      r"Maximal irregularity",
 
     "statistical-geometry___IRGL_sample_average":
-      " ",
+      r"Sample average irregularity",
 
     "statistical-geometry___IRGL_sample_standard-deviation":
-      " ",
+      r"Sample standard deviation of irregularity",
 
     "statistical-geometry___NCA_avgerage":
-      " ",
+      r"Average normalized number of connected "
+      r"components (number of connected components divided by the area of the "
+      r"object)",
 
     "statistical-geometry___NCA_max":
-      " ",
+      r"Maximal normalized number of connected "
+      r"components (number of connected components divided by the area of the "
+      r"object)",
 
     "statistical-geometry___NCA_sample_average":
-      " ",
+      r"Sample average normalized number of connected "
+      r"components (number of connected components divided by the area of the "
+      r"object)",
 
     "statistical-geometry___NCA_sample_standard-deviation":
-      " ",
+      r"Sample standard deviation of normalized number of connected "
+      r"components (number of connected components divided by the area of the "
+      r"object)",
 
     "statistical-geometry___TAREA_avgerage":
-      " ",
+      r"Average total clump area",
 
     "statistical-geometry___TAREA_max":
-      " ",
+      r"Maximal total clump area",
 
     "statistical-geometry___TAREA_sample_average":
-      " ",
+      r"Sample average total clump area",
 
     "statistical-geometry___TAREA_sample_standard-deviation":
-      " ",
+      r"Sample standard deviation of total clump area",
 
     "algebraic-invariant___":
-      " ",
+      "",
 
     "intensity___avgerage":
-      "average original gray value",
+      r"average original gray value",
 
     "intensity___standard-deviation":
       r"standard deviation of the original gray values",
@@ -519,22 +544,26 @@ feature_doc = {
       r"object perimeter $P$",
 
     "principle_gyration___ratio":
-      " ",
+      r"ratio of the two principle_gyrations",
 
     "principle_gyration___x":
-      " ",
+      r"distance between the principal axis and a line with the same second order moment as the object",
 
     "principle_gyration___y":
-      " ",
+      r"distance between the axis perpendicular "
+      r"to the principal one and a line with the same second order moment as "
+      r"the object",
 
     "area___":
-      "number of object pixels $N$",
+      r"number of object pixels $N$",
 
     "skewness___x":
-      " ",
+      r"projection skewness (normalized third order "
+      r"moment) in the direction of the principal axis",
 
     "skewness___y":
-      " ",
+      r"projection skewness (normalized third order "
+      r"moment) in the direction perpendicular to the principal axis",
 }
 
 github_prefix = "https://github.com/CellCognition/cecog/blob/master/"
