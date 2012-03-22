@@ -89,7 +89,7 @@ category_doc = {
         r"$\Gamma = \{ \gamma_{sB}\}$defines a series of operators which can be successively applied to theimage $f$. " 
         r"For each step, we record a measure (e.g. the sum of greylevel values) of what has been removed from the image. " 
         r"Hence, weobtain a list of measures $m_i = m(s_i)$ with $s_i \in \{s_1, s_2, s_3\ldots \}$. We have used the "
-        r"volume and the area, where the imagevolume $Vol(\cdot)$ means the sum of grey levels and the area$Area(\cdot)$" 
+        r"volume and the area, where the imagevolume $Vol(\cdot)$ means the sum of gray levels and the area$Area(\cdot)$" 
         r"means the number of non zero pixels. "
         r"$$\begin{eqnarray} v^{\phi}_i &=& \frac{Vol(\phi_{s_{i+1}} f - \phi_{s_i} f)}{Vol(f)} \nonumber \\ "
         r"a^{\phi}_i &=& \frac{Area(\phi_{s_{i+1}} f - \phi_{s_i} f)}{Area(f)} \nonumber \\ "
@@ -109,7 +109,7 @@ category_doc = {
     "haralick":
         r"The Haralick features aim at characterizing the texture of objects by means of joint"
         r"distribution of pixel value combinations."
-        r"In histograms, one tries to analyze the frequency of certain grey level values in an"
+        r"In histograms, one tries to analyze the frequency of certain gray level values in an"
         r"image. The inconvenience of this representation is that the spatial distribution of these"
         r"values is completely lost. One method to address this inconvenience is to record combinations"
         r"of pixel values at a certain distance. This can be done by the cooccurrence"
@@ -118,7 +118,7 @@ category_doc = {
         r"In order to obtain rotational invariance, the mean of the cooccurrence matrices is calculated for four "
         r"different angles ($\phi_i = 0^0, 45^0, 90^0, 145^0$). Let $$P_{i,j}=\frac{c_{i,j}}{N}$$ be the "
         r"cooccurrence probability for values $i$ and $j$ (for a given distance $d$ in all four angles) and let "
-        r"$\mu = \sum_j j \sum_i P(i,j)$ the mean grey level value and $\sigma^2 = \sum_j (j-\mu)^2 \sum_i P(i,j)$ "
+        r"$\mu = \sum_j j \sum_i P(i,j)$ the mean gray level value and $\sigma^2 = \sum_j (j-\mu)^2 \sum_i P(i,j)$ "
         r"its variance. Then, the following features can be calculated from the averaged cooccurrence matrix.<br/><br/>"   
         r"The Haralick features have been calculated for the distances d = 1, 2, 4, 8. We have to "
         r"note that with increasing distance, the invariance of the features is no longer guaranteed. "
@@ -129,16 +129,20 @@ category_doc = {
         "same as haralick but on normalized image input",
     
     "intensity":
-        "",
+        "Basic intensity features are simple statistics on the original gray value distribution of an object. "
+        "In contrast to texture features basic intensity features cannot describe substructures "
+        "and repeated subpatterns of the object.",
     
     "intensity-normalized":
-        "same as intensity but on normalized image input",
+        "Basic intensity-normalized features are simple statistics on the <i>normalized</i> gray value distribution of an object. "
+        "In contrast to texture features basic intensity features cannot describe substructures "
+        "and repeated subpatterns of the object.",
     
     "moments":
         r"Moments and derived features have been initially defined to characterize distributions of values (like "
         r"histograms), but they can also be used as shape or texture descriptors. Discrete moments $m_{pq}$ are defined " 
         r" as: $$ \label{equ:moments} m_{pq} = \sum x^p y^q f(x,y)$$ with $f(x,y) \in \{0,1\}$ for shape descriptors "
-        r"and $f(x,y)$ the grey level value for grey level descriptors. In pattern recognition tasks where objects are "
+        r"and $f(x,y)$ the gray level value for gray level descriptors. In pattern recognition tasks where objects are "
         r"to be characterized independently from their position and orientation, translation and rotation invariance are "
         r"required. This can be achieved by several means. One possibility is to use moment invariants <a class ='ref_link' href='#ref-hu:62'>[6]</a> as "
         r"features, i.e. to define polynomial combinations of moments which are invariant with respect to an affine "
@@ -440,35 +444,40 @@ feature_doc = {
       " ",
 
     "intensity___avgerage":
-      "the average grey value",
+      "average original gray value",
 
     "intensity___standard-deviation":
-      r"the standard deviation of the grey values",
+      r"standard deviation of the original gray values",
 
     "intensity___weighted-avgerage":
-      r"the average, weighted by the distance between pixel and center of gravity: $\frac{1}{N}\sum |x - \overline{x}| f(x)$",
+      r"average original gray values weighted by the distance between the pixel and center of gravity: "
+      r"$$\frac{1}{N}\sum |x - \overline{x}| f(x)$$",
 
     "intensity___weighted-distance":
-      r"average distance to the center of gravity: $\frac{1}{N}\sum |x - \overline{x}|$",
+      r"average distance to the center of gravity: "
+      r"$$\frac{1}{N}\sum |x - \overline{x}|$$",
 
     "intensity___weighted-inverse-avgerage":
-      r"the average, weighted by the inverse distance between pixel and center of gravity: $\frac{1}{N}\sum "
-      r"\frac{f(x)}{|x - \overline{x}| + 1}$",
+      r"average original gray values weighted by the inverse distance between the pixel and center of gravity: "
+      r"$$\frac{1}{N}\sum\frac{f(x)}{|x - \overline{x}| + 1}$$",
 
     "intensity-normalized___avgerage":
-      r"the respective intensity features with normalization",
+      r"average normalized gray value",
 
     "intensity-normalized___standard-deviation":
-      r"the respective intensity features with normalization",
+      r"standard deviation of the normalized gray values",
 
     "intensity-normalized___weighted-avgerage":
-      r"the respective intensity features with normalization",
+      r"average normalized gray values weighted by the distance between the pixel and center of gravity: "
+      r"$$\frac{1}{N}\sum |x - \overline{x}| f(x)$$",
 
     "intensity-normalized___weighted-distance":
-      r"the respective intensity features with normalization",
+      r"average distance to the center of gravity: "
+      r"$$\frac{1}{N}\sum |x - \overline{x}|$$",
 
     "intensity-normalized___weighted-inverse-avgerage":
-      r"the respective intensity features with normalization",
+      r"average normalized gray values weighted by the inverse distance between the pixel and center of gravity: "
+      r"$$\frac{1}{N}\sum\frac{f(x)}{|x - \overline{x}| + 1}$$",
 
     "perimeter___":
       r"the object perimeter $P$ in pixels",
