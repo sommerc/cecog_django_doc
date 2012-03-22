@@ -42,8 +42,8 @@ category_doc = {
         r"Circularity features estimate of the <i>roundness</i> of the object",
     
     "convexhull":
-        r"The convex hull of a set $X$ (binary image) is the smallest convex set containing $X$. Important features can "
-        r"be derived from the convex hull and from the set difference $D = Conv(X) \setminus X$. "
+        r"The convex hull $\mathrm{Conv}(X)$ of a set $X$ (binary image) is the smallest convex set containing $X$. Important features can "
+        r"be derived from the convex hull and from the set difference $D = \mathrm{Conv}(X) \setminus X$. "
         "\n"
         r"To study the maximal areas of the connected components of $D$ is useful in order to find binuclear cell "
         r"nuclei for instance. A perfect binuclear cell should have two concavities of more or less the same "
@@ -52,7 +52,7 @@ category_doc = {
         r"or the concavities have no symmetric size." 
         "\n"
         r"The size distribution of concavities is certainly a powerful feature. But we cannot conclude directly the "
-        r"number of possibly involved cell nuclei. The reason is that a ``bended'' row of several nuclei results on one "
+        r"number of possibly involved cell nuclei. The reason is that a 'bended' row of several nuclei results on one "
         r"side in one large concavity and on the other side in several small concavities. In order to deal with this "
         r"problem, it would be good, to be able to control the degree or size of concavity we are interested in. This "
         r"can be done by the use of granulometries.",
@@ -171,34 +171,40 @@ category_doc = {
 
 feature_doc = {
     "convexhull___average-clump-displacement":
-      " ",
+      r"difference between the center of gravity of the object and the centers "
+      r"of the connected components in $D$, weighted by their area",
 
     "convexhull___area-ratio":
-      " ",
+      r"ratio of the area of the "
+      r"object to the area of its convex hull. This feature equals 1 for "
+      r"convex sets, if not, it is smaller",
 
     "convexhull___number-of-connected-components":
-      " ",
+      r"number of connected components of $D$",
 
     "convexhull___area-max-0":
-      " ",
+      r"area of the biggest connected components of $D$.",
 
     "convexhull___area-max-1":
-      " ",
+      r"area of the second biggest connected components of $D$.",
 
     "convexhull___area-max-2":
-      " ",
+      r"area of the thrid biggest connected components of $D$.",
 
     "convexhull___area-mean":
-      " ",
+      r"mean area of the connected components of $D$.",
 
     "convexhull___rugosity":
-      " ",
+      r"ratio of the perimeter of the "
+      r"object to the perimeter of its convex hull. "
+      r"For convex objects, this feature equals 1, if "
+      r"the object is not convex, it is smaller than 1",
 
     "convexhull___number-of-large-connected-components":
-      " ",
+      r"number of large connected components (larger than a certain threshold) of $D$",
 
     "convexhull___area-variance":
-      " ",
+      "area variance of the connected components of $D$",
 
     "circularity___standard":
       r"rough estimation of the 'roundness' of the object: "
