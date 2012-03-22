@@ -20,7 +20,7 @@ group_doc = {
         r"and from the set difference." ,
         
       "Distance map features":
-        r"Distance map features are object features derived from the eucliedian distance transform (distance map)"
+        r"Distance map features are object features derived from the euclidean distance transform (distance map) "
         r"of the image",
         
       "Granulometry features":
@@ -58,10 +58,10 @@ category_doc = {
         r"can be done by the use of granulometries.",
     
     "distance-map-dynamics":
-        r"The idea is the following: let $D_X$ be the "
+        r"Let $D_X$ be the "
         r"distance map of set $X$ (binary image), i.e. $D_X(x)$ is the distance "
         r"of pixel $x \in X$ to the nearest pixel $y \notin X$. If the object "
-        r"corresponds to an ellipse for instance, we can expect one prominent " 
+        r"corresponds to an ellipse, one can expect one prominent " 
         r"maximum in the distance function. If it could be decomposed into two "
         r"overlapping ellipses, where each of these ellipses are well "
         r"recognizable, on would expect two prominent maxima. Actually, if the "
@@ -204,7 +204,7 @@ feature_doc = {
       r"number of large connected components (larger than a certain threshold) of $D$",
 
     "convexhull___area-variance":
-      "area variance of the connected components of $D$",
+      r"area variance of the connected components of $D$",
 
     "circularity___standard":
       r"rough estimation of the 'roundness' of the object: "
@@ -223,10 +223,10 @@ feature_doc = {
       "border (due to a strong concavity)",
 
     "distance-map-dynamics___number-of-maxima":
-      " ",
+      r"number of maxima in the distance map",
 
-    "distance-map-dynamics___highest-dynamic":
-      " ",
+    "distance-map-dynamics___radius":
+      r"radius of the first four highest dynamics of the distance map",
 
     "eccentricity___":
       " ",
@@ -529,7 +529,7 @@ feature_githublink = {
     "expansion___min": ("csrc/include/cecog/features.hxx", 990,990),
     "expansion___ratio": ("csrc/include/cecog/features.hxx", 990,990),
     "distance-map-dynamics___number-of-maxima": ("csrc/include/cecog/features.hxx", 990,990),
-    "distance-map-dynamics___highest-dynamic": ("csrc/include/cecog/features.hxx", 990,990),
+    "distance-map-dynamics___radius": ("csrc/include/cecog/features.hxx", 990,990),
     "eccentricity___": ("csrc/include/cecog/features.hxx", 990,990),
     "ellipse___ratio-axis": ("csrc/include/cecog/features.hxx", 990,990),
     "ellipse___major-axis": ("csrc/include/cecog/features.hxx", 990,990),
@@ -628,7 +628,7 @@ parameter_doc = {
     "distance": "",
     "angular-step": "",
     "operation": "",
-    "radius": "",
+    "highest": "",
                  }
 
 reference_doc = {
