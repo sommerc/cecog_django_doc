@@ -502,7 +502,7 @@ feature_doc = {
       r"Sample standard deviation of total clump area",
 
     "algebraic-invariant___":
-      r"Algebraic invarient",
+      r"The $I$th Hu-moment (algebraic invarient)",
 
     "intensity___avgerage":
       r"average original gray value",
