@@ -39,7 +39,7 @@ group_doc = {
 
 category_doc = {
     "circularity":
-    "",
+        r"Circularity features estimate of the <i>roundness</i> of the object",
     
     "convexhull":
         r"The convex hull of a set $X$ (binary image) is the smallest convex set containing $X$. Important features can "
@@ -58,18 +58,18 @@ category_doc = {
         r"can be done by the use of granulometries.",
     
     "distance-map-dynamics":
-    r"The idea is the following: let $D_X$ be the "
-    r"distance map of set $X$ (binary image), i.e. $D_X(x)$ is the distance "
-    r"of pixel $x \in X$ to the nearest pixel $y \notin X$. If the object "
-    r"corresponds to an ellipse for instance, we can expect one prominent " 
-    r"maximum in the distance function. If it could be decomposed into two "
-    r"overlapping ellipses, where each of these ellipses are well "
-    r"recognizable, on would expect two prominent maxima. Actually, if the "
-    r"basic shapes are sufficiently prominent, the number of prominent "
-    r"maxima should be the same as the number of the basic shapes.",
+        r"The idea is the following: let $D_X$ be the "
+        r"distance map of set $X$ (binary image), i.e. $D_X(x)$ is the distance "
+        r"of pixel $x \in X$ to the nearest pixel $y \notin X$. If the object "
+        r"corresponds to an ellipse for instance, we can expect one prominent " 
+        r"maximum in the distance function. If it could be decomposed into two "
+        r"overlapping ellipses, where each of these ellipses are well "
+        r"recognizable, on would expect two prominent maxima. Actually, if the "
+        r"basic shapes are sufficiently prominent, the number of prominent "
+        r"maxima should be the same as the number of the basic shapes.",
     
     "geometry":
-    "",
+        r"Geometry features describe basic geometric properties of an object.",
     
     "granulometry":
         r"Granulometry allows one to study the size distribution of objects (or"
@@ -201,17 +201,18 @@ feature_doc = {
       " ",
 
     "circularity___standard":
-      r"is a rough estimation of the 'roundness' of the object: $circ = \frac{P}{2 \sqrt{\pi N}}$. It should be "
-      "one for a perfect circle, becoming larger with decreasing similarity to a circle",
+      r"rough estimation of the 'roundness' of the object: "
+      r"$$\frac{P}{2 \sqrt{\pi N}}$$"
+      r"It should be one for a perfect circle, becoming larger with decreasing similarity to a circle",
 
     "expansion___max":
-      r"the maximal distance $\Delta_{max}$ between center of gravity and border pixels",
+      r"maximal distance $\Delta_{\max}$ between center of gravity and border pixels",
 
     "expansion___min":
-      " ",
+      "minimal distance $\Delta_{\min}$ between center of gravity and border pixels",
 
     "expansion___ratio":
-      r"the ratio of minimal to maximal distance between center of gravity and border pixels (which takes 1 as a"
+      r"ratio of minimal to maximal distance between center of gravity and border pixels (which takes 1 as a"
       "maximal value for a perfectly round object and 0 for an object with the center of gravity lying on its "
       "border (due to a strong concavity)",
 
@@ -361,12 +362,16 @@ feature_doc = {
       " ",
 
     "circularity___robust-avg":
-      r"is a more robust way of calculating circularity, as it does not rely on the perimeter, but on $\Delta_{max}$: "
-      r"$irr = \frac{1 + \sqrt{\pi}\Delta_{max} }{\sqrt{N}} - 1$. The measure tends towards 0 for a perfect circle",
+      r"robust way of calculating circularity, as it does not rely on the perimeter, but on the maximal "
+      r"distance $\Delta_{max}$: "
+      r"$$\frac{1 + \sqrt{\pi}\Delta_{max} }{\sqrt{N}} - 1$$ " 
+      r"The measure tends towards 0 for a perfect circle",
 
     "circularity___robust-max":
-      r"is the same as irregularity, but $\Delta_{max}$ is replaced by the average difference $\overline{\Delta}$ "
-      "between center of gravity and the border pixels",
+      r"robust way of calculating circularity, as it does not rely on the perimeter, but on the average "
+      r"distance  $\overline{\Delta}$: "
+      r"$$\frac{1 + \sqrt{\pi}\overline{\Delta} }{\sqrt{N}} - 1$$ " 
+      r"The measure tends towards 0 for a perfect circle",
 
     "statistical-geometry___CAREA_avgerage":
       " ",
@@ -480,7 +485,7 @@ feature_doc = {
       r"$$\frac{1}{N}\sum\frac{f(x)}{|x - \overline{x}| + 1}$$",
 
     "perimeter___":
-      r"the object perimeter $P$ in pixels",
+      r"object perimeter $P$",
 
     "principle_gyration___ratio":
       " ",
@@ -492,7 +497,7 @@ feature_doc = {
       " ",
 
     "area___":
-      "the number of object pixels $N$ ",
+      "number of object pixels $N$",
 
     "skewness___x":
       " ",
